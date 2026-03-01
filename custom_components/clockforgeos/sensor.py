@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import UnitOfInformation, UnitOfIlluminance, UnitOfPressure, UnitOfTemperature, PERCENTAGE
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
@@ -10,11 +9,11 @@ from .const import DOMAIN, SENSOR_DESCRIPTIONS
 from .entity import ClockForgeEntity
 
 UNIT_MAP = {
-    "°C": UnitOfTemperature.CELSIUS,
-    "hPa": UnitOfPressure.HPA,
-    "lx": UnitOfIlluminance.LUX,
-    "%": PERCENTAGE,
-    "B": UnitOfInformation.BYTES,
+    "°C": "°C",
+    "hPa": "hPa",
+    "lx": "lx",
+    "%": "%",
+    "B": "B",
     "MHz": "MHz",
     "dBm": "dBm",
     "s": "s",
