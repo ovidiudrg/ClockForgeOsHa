@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 DOMAIN = "clockforgeos"
-PLATFORMS = ["sensor", "binary_sensor", "button"]
+PLATFORMS = ["sensor", "binary_sensor", "button", "switch", "number"]
 
 CONF_HTTP_USER = "http_user"
 CONF_HTTP_PASSWORD = "http_password"
@@ -66,4 +66,19 @@ BINARY_SENSOR_DESCRIPTIONS = (
     ("occupancy", "Occupancy", ("sensors", "occupancy"), "occupancy"),
     ("wifi_connected", "WiFi Connected", ("network", "connected"), "connectivity"),
     ("mqtt_connected", "MQTT Connected", ("network", "mqttConnected"), "connectivity"),
+)
+
+SWITCH_DESCRIPTIONS = (
+    ("display_enabled", "Display Enabled", ("settings", "display", "enabled"), "mdi:power", None, "display_enabled"),
+    ("wake_on_motion", "Wake On Motion", ("settings", "display", "wakeOnMotionEnabled"), "mdi:motion-sensor", None, "wake_on_motion_enabled"),
+    ("wifi_enabled", "WiFi Enabled", ("settings", "network", "wifiEnabled"), "mdi:wifi", None, "wifi_enabled"),
+    ("mqtt_enabled", "MQTT Enabled", ("settings", "network", "mqttEnabled"), "mdi:message-processing", None, "mqtt_enabled"),
+    ("ntp_enabled", "NTP Enabled", ("settings", "time", "ntpEnabled"), "mdi:clock-check-outline", None, "ntp_enabled"),
+    ("rtc_enabled", "RTC Enabled", ("settings", "time", "rtcEnabled"), "mdi:calendar-clock", None, "rtc_enabled"),
+)
+
+NUMBER_DESCRIPTIONS = (
+    ("display_brightness", "Display Brightness", ("settings", "display", "brightness"), 0, 100, 1, "%", "display_brightness"),
+    ("radar_timeout", "Radar Timeout", ("settings", "display", "radarTimeoutMin"), 0, 60, 1, "min", "radar_timeout_min"),
+    ("utc_offset_hours", "UTC Offset Hours", ("settings", "time", "utcOffsetHours"), -12, 14, 1, "h", "utc_offset_hours"),
 )

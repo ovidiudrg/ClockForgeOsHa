@@ -61,13 +61,17 @@ class ClockForgeCoordinator(DataUpdateCoordinator[dict[str, Any]]):
 
     async def _async_update_data(self) -> dict[str, Any]:
         try:
-            data = await self.api.get_status()
+            status, settings = await asyncio.gather(
+                self.api.get_status(),
+                self.api.get_settings(),
+            )
         except (ClientError, TimeoutError, ValueError) as err:
             raise UpdateFailed(f"ClockForgeOS status update failed: {err}") from err
 
         self._apply_options()
-        await self._async_refresh_mqtt_subscription(data)
-        return data
+        status["settings"] = settings
+        await self._async_refresh_mqtt_subscription(status)
+        return status
 
     def _control_transport(self) -> str:
         return self.entry.options.get(CONF_CONTROL_TRANSPORT, DEFAULT_CONTROL_TRANSPORT)
@@ -131,6 +135,12 @@ class ClockForgeCoordinator(DataUpdateCoordinator[dict[str, Any]]):
 
     async def async_execute_http_command(self, action: str, **extra: Any) -> dict[str, Any]:
         result = await self.api.post_command(action, **extra)
+        self.last_command_result = result
+        await self.async_request_refresh()
+        return result
+
+    async def async_save_settings(self, **settings: Any) -> dict[str, Any]:
+        result = await self.api.post_settings(**settings)
         self.last_command_result = result
         await self.async_request_refresh()
         return result

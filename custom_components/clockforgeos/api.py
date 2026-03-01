@@ -14,10 +14,16 @@ class ClockForgeApi:
     async def get_status(self) -> dict[str, Any]:
         return await self._request_json("GET", "/api/status")
 
+    async def get_settings(self) -> dict[str, Any]:
+        return await self._request_json("GET", "/api/settings")
+
     async def post_command(self, action: str, **extra: Any) -> dict[str, Any]:
         payload = {"action": action}
         payload.update(extra)
         return await self._request_json("POST", "/api/command", data=payload)
+
+    async def post_settings(self, **extra: Any) -> dict[str, Any]:
+        return await self._request_json("POST", "/api/settings", data=extra)
 
     async def _request_json(self, method: str, path: str, data: dict[str, Any] | None = None) -> dict[str, Any]:
         async with self._session.request(
