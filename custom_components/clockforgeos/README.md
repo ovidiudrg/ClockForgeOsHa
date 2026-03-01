@@ -93,18 +93,19 @@ Each service currently takes `entry_id`.
 Current writable entities map to the firmware settings surface:
 
 1. Switches:
-   `Display Enabled`, `Wake On Motion`, `Lighting Enabled`, `WiFi Enabled`, `MQTT Enabled`, `NTP Enabled`, `RTC Enabled`, `OTA Enabled`
+   `Display Enabled`, `Wake On Motion`, `Lighting Enabled`, `WiFi Enabled`, `MQTT Enabled`, `NTP Enabled`, `RTC Enabled`, `Auto DST`, `OTA Enabled`
 2. Numbers:
-   `Display Brightness`, `Lighting Brightness`, `Lighting Red`, `Lighting Green`, `Lighting Blue`, `Radar Timeout`, `UTC Offset Hours`
+   `Display Brightness`, `Lighting Speed`, `Lighting Brightness`, `Lighting Red`, `Lighting Green`, `Lighting Blue`, `Radar Timeout`, `UTC Offset Hours`
 3. Light:
    `Lighting`
+   Supports RGB plus effect selection for `Static`, `Rainbow`, `Breathe`, `KITT`, and `Sparkle`.
 
 Additional OTA observability:
 
 1. Sensor: `OTA State`
 2. Sensor: `OTA Progress`
 
-There is no `select` entity yet because the current firmware API does not expose a stable device-backed enum setting that would justify one.
+Lighting mode is exposed through the light entity's built-in effect support instead of a separate select entity.
 
 ## Next
 

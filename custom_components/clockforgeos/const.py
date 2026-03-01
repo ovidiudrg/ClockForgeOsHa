@@ -79,11 +79,13 @@ SWITCH_DESCRIPTIONS = (
     ("mqtt_enabled", "MQTT Enabled", ("settings", "network", "mqttEnabled"), "mdi:message-processing", None, "mqtt_enabled"),
     ("ntp_enabled", "NTP Enabled", ("settings", "time", "ntpEnabled"), "mdi:clock-check-outline", None, "ntp_enabled"),
     ("rtc_enabled", "RTC Enabled", ("settings", "time", "rtcEnabled"), "mdi:calendar-clock", None, "rtc_enabled"),
+    ("auto_dst_enabled", "Auto DST", ("settings", "time", "autoDstEnabled"), "mdi:weather-sunset-up", None, "time_auto_dst_enabled"),
     ("ota_enabled", "OTA Enabled", ("settings", "security", "otaEnabled"), "mdi:upload-network", None, "ota_enabled"),
 )
 
 NUMBER_DESCRIPTIONS = (
     ("display_brightness", "Display Brightness", ("settings", "display", "brightness"), 0, 100, 1, "%", "display_brightness"),
+    ("lighting_speed", "Lighting Speed", ("settings", "lighting", "speed"), 1, 255, 1, None, "lighting_speed"),
     ("lighting_brightness", "Lighting Brightness", ("settings", "lighting", "brightness"), 0, 255, 1, None, "lighting_brightness"),
     ("lighting_red", "Lighting Red", ("settings", "lighting", "red"), 0, 255, 1, None, "lighting_red"),
     ("lighting_green", "Lighting Green", ("settings", "lighting", "green"), 0, 255, 1, None, "lighting_green"),
