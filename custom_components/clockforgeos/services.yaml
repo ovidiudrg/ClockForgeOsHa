@@ -1,0 +1,27 @@
+sync_time:
+  fields:
+    entry_id:
+      required: true
+      selector:
+        text:
+
+wifi_connect:
+  fields:
+    entry_id:
+      required: true
+      selector:
+        text:
+
+wifi_disconnect:
+  fields:
+    entry_id:
+      required: true
+      selector:
+        text:
+
+toggle_display:
+  fields:
+    entry_id:
+      required: true
+      selector:
+        text:

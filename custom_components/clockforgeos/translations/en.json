@@ -1,0 +1,30 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to ClockForgeOS",
+        "description": "Add a ClockForgeOS device using its local HTTP API.",
+        "data": {
+          "host": "Host or IP address",
+          "username": "HTTP username",
+          "password": "HTTP password"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to the ClockForgeOS device."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "ClockForgeOS Options",
+        "description": "Configure polling and control transport.",
+        "data": {
+          "control_transport": "Control transport",
+          "scan_interval": "Status poll interval (seconds)"
+        }
+      }
+    }
+  }
+}
