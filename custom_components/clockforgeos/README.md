@@ -6,7 +6,7 @@ This custom integration is the first HACS-facing client for `ClockForgeOS`.
 
 1. Add a clock through its local HTTP API.
 2. Poll `/api/status` for device state and capabilities.
-3. Expose sensors, binary sensors, control buttons, switches, and numbers in Home Assistant.
+3. Expose sensors, binary sensors, control buttons, switches, numbers, and a light entity in Home Assistant.
 4. Expose service calls for sync, Wi-Fi connect/disconnect, and display toggle.
 5. Consume the firmware MQTT command/result contract when enabled, including request/result correlation IDs.
 6. Expose config-entry options and diagnostics for support workflows.
@@ -14,7 +14,7 @@ This custom integration is the first HACS-facing client for `ClockForgeOS`.
 ## Install
 
 1. Copy `custom_components/clockforgeos` into your Home Assistant `custom_components` directory.
-2. Copy [hacs.json](/c:/Users/User/Documents/Arduino/ClockForgeOS_v1/hacs.json) to the repository root when publishing the integration repo.
+2. Keep `hacs.json` in the repository root when publishing the integration repo.
 3. Restart Home Assistant.
 4. Add `ClockForgeOS` from the integrations UI.
 
@@ -93,9 +93,11 @@ Each service currently takes `entry_id`.
 Current writable entities map to the firmware settings surface:
 
 1. Switches:
-   `Display Enabled`, `Wake On Motion`, `WiFi Enabled`, `MQTT Enabled`, `NTP Enabled`, `RTC Enabled`, `OTA Enabled`
+   `Display Enabled`, `Wake On Motion`, `Lighting Enabled`, `WiFi Enabled`, `MQTT Enabled`, `NTP Enabled`, `RTC Enabled`, `OTA Enabled`
 2. Numbers:
-   `Display Brightness`, `Radar Timeout`, `UTC Offset Hours`
+   `Display Brightness`, `Lighting Brightness`, `Lighting Red`, `Lighting Green`, `Lighting Blue`, `Radar Timeout`, `UTC Offset Hours`
+3. Light:
+   `Lighting`
 
 Additional OTA observability:
 
