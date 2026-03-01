@@ -93,9 +93,14 @@ Each service currently takes `entry_id`.
 Current writable entities map to the firmware settings surface:
 
 1. Switches:
-   `Display Enabled`, `Wake On Motion`, `WiFi Enabled`, `MQTT Enabled`, `NTP Enabled`, `RTC Enabled`
+   `Display Enabled`, `Wake On Motion`, `WiFi Enabled`, `MQTT Enabled`, `NTP Enabled`, `RTC Enabled`, `OTA Enabled`
 2. Numbers:
    `Display Brightness`, `Radar Timeout`, `UTC Offset Hours`
+
+Additional OTA observability:
+
+1. Sensor: `OTA State`
+2. Sensor: `OTA Progress`
 
 There is no `select` entity yet because the current firmware API does not expose a stable device-backed enum setting that would justify one.
 

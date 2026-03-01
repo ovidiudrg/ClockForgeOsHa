@@ -48,6 +48,8 @@ SENSOR_DESCRIPTIONS = (
     ("lux", "Illuminance", ("sensors", "lux"), "illuminance", "lx"),
     ("brightness", "Display Brightness", ("display", "brightness"), None, "%"),
     ("time_source", "Time Source", ("time", "source"), None, None),
+    ("ota_state", "OTA State", ("ota", "state"), None, None),
+    ("ota_progress", "OTA Progress", ("ota", "progressPercent"), None, "%"),
     ("wifi_state", "WiFi State", ("network", "state"), None, None),
     ("mqtt_state", "MQTT State", ("network", "mqttState"), None, None),
     ("uptime", "Uptime", ("system", "uptimeSeconds"), "duration", "s"),
@@ -75,6 +77,7 @@ SWITCH_DESCRIPTIONS = (
     ("mqtt_enabled", "MQTT Enabled", ("settings", "network", "mqttEnabled"), "mdi:message-processing", None, "mqtt_enabled"),
     ("ntp_enabled", "NTP Enabled", ("settings", "time", "ntpEnabled"), "mdi:clock-check-outline", None, "ntp_enabled"),
     ("rtc_enabled", "RTC Enabled", ("settings", "time", "rtcEnabled"), "mdi:calendar-clock", None, "rtc_enabled"),
+    ("ota_enabled", "OTA Enabled", ("settings", "security", "otaEnabled"), "mdi:upload-network", None, "ota_enabled"),
 )
 
 NUMBER_DESCRIPTIONS = (
