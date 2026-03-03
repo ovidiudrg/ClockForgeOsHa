@@ -6,10 +6,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from .const import (
-    BUTTON_DISPLAY_TOGGLE,
-    BUTTON_SYNC,
-    BUTTON_WIFI_CONNECT,
-    BUTTON_WIFI_DISCONNECT,
+    BUTTON_DESCRIPTIONS,
     DOMAIN,
 )
 from .entity import ClockForgeEntity
@@ -22,7 +19,7 @@ class ClockForgeButton(ClockForgeEntity, ButtonEntity):
         entry,
         key: str,
         name: str,
-        mqtt_suffix: str,
+        mqtt_suffix: str | None,
         http_action: str,
         mqtt_payload: str | int | dict | None = None,
         http_extra: dict | None = None,
@@ -34,6 +31,9 @@ class ClockForgeButton(ClockForgeEntity, ButtonEntity):
         self._http_extra = http_extra or {}
 
     async def async_press(self) -> None:
+        if self._mqtt_suffix is None:
+            await self.coordinator.async_execute_http_command(self._http_action, **self._http_extra)
+            return
         await self.coordinator.async_execute_command(
             mqtt_suffix=self._mqtt_suffix,
             http_action=self._http_action,
@@ -46,9 +46,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
     data = hass.data[DOMAIN][entry.entry_id]
     coordinator = data["coordinator"]
     entities = [
-        ClockForgeButton(coordinator, entry, BUTTON_SYNC, "Sync Time", "time/sync", "sync"),
-        ClockForgeButton(coordinator, entry, BUTTON_DISPLAY_TOGGLE, "Toggle Display", "display/set", "display_toggle", "toggle"),
-        ClockForgeButton(coordinator, entry, BUTTON_WIFI_CONNECT, "WiFi Connect", "wifi/connect", "wifi_connect"),
-        ClockForgeButton(coordinator, entry, BUTTON_WIFI_DISCONNECT, "WiFi Disconnect", "wifi/disconnect", "wifi_disconnect"),
+        ClockForgeButton(coordinator, entry, key, name, mqtt_suffix, http_action, mqtt_payload, http_extra)
+        for key, name, mqtt_suffix, http_action, mqtt_payload, http_extra in BUTTON_DESCRIPTIONS
     ]
     async_add_entities(entities)

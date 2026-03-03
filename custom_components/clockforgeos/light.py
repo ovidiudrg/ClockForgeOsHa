@@ -25,6 +25,9 @@ class ClockForgeLightingEntity(ClockForgeEntity, LightEntity):
         "Breathe": "3",
         "KITT": "4",
         "Sparkle": "5",
+        "Flow": "6",
+        "Random": "7",
+        "Fireworks": "8",
     }
 
     _mode_to_effect = {value: key for key, value in _effect_to_mode.items()}

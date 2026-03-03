@@ -1,7 +1,7 @@
 {
   "domain": "clockforgeos",
   "name": "ClockForgeOS",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "documentation": "https://github.com/clockforge/clockforgeos",
   "issue_tracker": "https://github.com/clockforge/clockforgeos/issues",
   "dependencies": [],
